@@ -1,0 +1,21 @@
+---
+version: "2.1"
+services:
+  unifi-controller:
+    # 6.0.28
+    image: ghcr.io/linuxserver/unifi-controller@sha256:687def39f8f1ba5afff73df96d5950a3e90e2c37c69a05314338da6bfc7e62d5
+    container_name: unifi-controller
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - data:/config
+    ports:
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8443:8443
+    restart: unless-stopped
+
+volumes:
+  data:
