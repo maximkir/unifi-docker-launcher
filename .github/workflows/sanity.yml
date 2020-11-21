@@ -11,5 +11,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Start Unifi Controller
         run: |
-          export DOCKER_NETWORK=${{ job.services.network }}
+          # export DOCKER_NETWORK=${{ job.services.network }}
           ./unifi_controller.sh start
