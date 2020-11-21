@@ -1,0 +1,16 @@
+name: sanity
+
+on: push
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Start Unifi Controller
+        run: |
+          ./unifi_controller.sh start
+        env:
+          DOCKER_NETWORK: ${{ job.services.network }}
