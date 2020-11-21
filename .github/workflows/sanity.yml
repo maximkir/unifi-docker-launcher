@@ -11,4 +11,5 @@ jobs:
         uses: actions/checkout@v2
       - name: sanity
         run: |
+          export HOST_IP=$(ip route show | awk '/default/ {print $3}')
           ./unifi_controller.sh start
