@@ -9,7 +9,7 @@ function start()
     docker ps | grep -q unifi-controller
     sleep 10
     docker run \
-    --network container:unifi-controller \
+    --network ${DOCKER_NETWORK:-container:unifi-controller} \
     appropriate/curl -v \
     --connect-timeout 5 --max-time 10 --retry 5 --retry-delay 0 --retry-max-time 60 -kILs --fail http://127.0.0.1:8080 || exit 1
     exit $?
